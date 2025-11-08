@@ -5,8 +5,12 @@ public class BaseEntity {
     private int id;
     private String address;
 
-    public BaseEntity(){
-
+    // public BaseEntity(){
+    //     System.out.println("Default Constructor of BaseEntity");
+    // }
+    public BaseEntity(String name){
+        System.out.println("Constructor of BaseEntity with key: "+ name );
+        this.name = name;
     }
 
     // Getters

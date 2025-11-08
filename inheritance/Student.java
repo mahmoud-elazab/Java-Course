@@ -5,6 +5,10 @@ import java.util.Scanner;
 public class Student extends BaseEntity {
     private double grade;
 
+    public Student(){
+        super("Mahmoud");
+        System.out.println("Default Constructor Student");
+    }
     // Getter and setter
     public double getGrade() {
         return grade;
@@ -19,8 +23,8 @@ public class Student extends BaseEntity {
         Scanner sc = new Scanner(System.in);
         Student student = new Student();
 
-        System.out.print("Enter name: ");
-        student.setName(sc.nextLine());
+        // System.out.print("Enter name: ");
+        // student.setName(sc.nextLine());
 
         System.out.print("Enter ID: ");
         student.setId(sc.nextInt());

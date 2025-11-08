@@ -1,3 +1,5 @@
+package javaBasics;
+
 public class Main {
 
   public void myMethod(String fname) {

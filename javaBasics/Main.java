@@ -15,7 +15,7 @@ public class Main {
     String lastName = "Doe";
     String fullName = firstName + lastName;
     System.out.println(fullName);
-    //---------------
+    //----------------
     int x = 5;
     int y = 6;
     System.out.println("The sum is " + x + y);   // Prints: The sum is 56

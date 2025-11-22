@@ -21,7 +21,7 @@ public class Main {
         System.out.println("1: DivideTwoNumbers");
         System.out.println("2: StringToInteger");
         System.out.println("3: ToUpperCase");
-        System.out.println("4: AccessArrayElements");
+        System.out.println("4: AccessArrayElements (Surprise Game)");
         System.out.println("5: FileReader");
         System.out.println("6: DivideTwoNumbers");
         System.out.println("7: AccessProvider");

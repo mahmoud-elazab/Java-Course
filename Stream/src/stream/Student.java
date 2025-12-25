@@ -1,9 +1,9 @@
 package stream;
 
 public class Student {
-    String name;
-    String department;
-    double grade;
+    private String name;
+    private String department;
+    private double grade;
 
     // Constructor + Getters
     Student(String name, String department, double grade) {

@@ -181,7 +181,7 @@ public class Main {
         System.out.println("Find the average salary per department in a list of employees:");
         Map <String, Double> avgSalaryPerDept = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.averagingDouble(Employee::getSalary)));
         avgSalaryPerDept.forEach((dept, avgSalary) ->
-        System.out.println("Dept: " + dept + "----> Average Salary: " + avgSalary));
+        System.out.println("Dept: " + dept + " -----> Average Salary: " + avgSalary));
         System.out.println("--------------------------------------------");
 
 
@@ -196,19 +196,82 @@ public class Main {
 
 
         //Extract all unique characters from a list of words.
-        System.out.println("Flatten a list of lists into a single list:");
+        System.out.println("Extract all unique characters from a list of words:");
         List<Character> uniqueChar = names.stream().filter(name->name != null && !name.isEmpty()).flatMap(word -> word.chars().mapToObj(c -> (char) c)).distinct().toList();
         System.out.println(uniqueChar);
         System.out.println("--------------------------------------------");
 
 
+        //Filter a list of Optionals and collect non-empty values.
+        System.out.println("Filter a list of Optionals and collect non-empty values:");
+        List<Optional<String>> data = List.of(Optional.of("Ali"),
+            Optional.empty(),
+            Optional.of("Mona"),
+            Optional.empty()
+        );
+        List<String> nonEmptyOptional =data.stream().flatMap(Optional::stream).toList();
+        System.out.println(nonEmptyOptional);
+        System.out.println("--------------------------------------------");
+
+        //Map a list of strings to their lengths.
+        System.out.println("Map a list of strings to their lengths:");
+        List<Integer> strLength = names.stream().filter(name->name != null).map(String::length).toList();
+        System.out.println(strLength);
+        System.out.println("--------------------------------------------");
+
+        //Return a list of uppercased words that start with “A”.
+        List<String> namesStartsWithAUpperCase = names.stream().filter(name->name != null && !name.isEmpty()).filter(name->name.toUpperCase().startsWith("A")).map(name->name.toUpperCase()).distinct().toList();
+        System.out.println("Return a list of uppercased words that start with “A”:");
+        System.out.println(namesStartsWithAUpperCase);
+        System.out.println("--------------------------------------------");
 
 
+        //Sort a list of employees by salary then by name.
+        System.out.println(" -------------------");
+        System.out.println("|Advanced Operations|");
+        System.out.println(" -------------------");
+        System.out.println("Sort a list of employees by salary then by name:");
+        List<Employee> sortedEmployees =
+        employees.stream().sorted(Comparator.comparing(Employee::getSalary).thenComparing(Employee::getName)).toList();
+        sortedEmployees.forEach(System.out::println);
+        System.out.println("--------------------------------------------");
 
 
+        //Find the second highest number in a list.
+        int secondHighest =numbers.stream().distinct().sorted(Comparator.reverseOrder()).skip(1).findFirst().orElseThrow();
+        System.out.println("Find the second highest number in a list:");
+        System.out.println(secondHighest);
+        System.out.println("--------------------------------------------");
 
+
+        //Find duplicate elements in a list of integers.
+        Set<Integer> duplicates =numbers.stream().filter(n -> Collections.frequency(numbers, n) > 1).collect(Collectors.toSet());
+        System.out.println("Find duplicate elements in a list of integers:");
+        System.out.println(duplicates);
+        System.out.println("--------------------------------------------");
+
+
+        //Remove null or empty strings from a list using stream.
+        List<String> listNullRemoved = names.stream().filter(name->name != null && !name.isEmpty()).toList();
+        System.out.println("Remove null or empty strings from a list using stream:");
+        System.out.println(listNullRemoved);
+        System.out.println("--------------------------------------------");
+
+        //Partition students into pass/fail groups based on grade.
+        Map<Boolean, List<Student>> passFail =students.stream().collect(Collectors.partitioningBy(s -> s.getGrade() >= 60));
+        System.out.println("Partition students into pass/fail groups based on grade:");
+        passFail.forEach((passed, list) -> {if (passed) {
+            System.out.println("Passed students:");
+        } else {
+            System.out.println("Failed students:");}
+            list.forEach(s ->
+                System.out.println(s.getName() + " (" + s.getGrade() + ")"));
+                System.out.println();});
+        System.out.println("--------------------------------------------");
+        System.out.println("End of Task");
+        System.out.println("--------------------------------------------");
 
 
 
     }
-}
+} 

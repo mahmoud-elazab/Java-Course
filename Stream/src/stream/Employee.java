@@ -18,5 +18,10 @@ public class Employee {
     public int getAge() { return age; }
     public String getDepartment() { return department; }
     public double getSalary() { return salary; }
+    
+    @Override
+    public String toString() {
+    return name + " | " + age + " | " + department + " | " + salary;
+}
 }
 
